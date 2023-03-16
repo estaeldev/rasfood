@@ -1,6 +1,8 @@
 package com.rasfood.restaurante.dao;
 
+import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 import javax.persistence.EntityManager;
 
@@ -21,9 +23,23 @@ public class CategoriaDao {
         this.entityManager.flush();
     }
 
-    public Categoria findById(final Long id) {
-        Categoria categoria = this.entityManager.find(Categoria.class, id);
-        return categoria;
+    public Optional<List<Categoria>> findAll() {
+        try {
+            String query = "SELECT c FROM Categoria c";
+             List<Categoria> cardapioList = this.entityManager.createQuery(query, Categoria.class).getResultList();
+            return Optional.of(cardapioList);
+        } catch (Exception e) {
+            return Optional.empty();
+        }
+    }
+
+    public Optional<Categoria> findById(final Long id) {
+        try {
+            Categoria categoria = this.entityManager.find(Categoria.class, id);
+            return Optional.of(categoria);
+        } catch (Exception e) {
+            return Optional.empty();
+        }
     }
 
     public void update(final Categoria categoria) {
