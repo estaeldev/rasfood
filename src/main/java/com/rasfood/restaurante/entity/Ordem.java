@@ -21,36 +21,28 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "cardapios")
-public class Cardapio {
+@Table(name = "ordens")
+public class Ordem {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String nome;
-    private String descricao;
-    private Boolean disponivel;
-    private BigDecimal valor;
+    @Column(name = "valor_total")
+    private BigDecimal valotTotal;
 
-    @Column(name = "data_de_registro")
-    private LocalDateTime dataDeRegistro = LocalDateTime.now(); 
+    @Column(name = "data_de_criacao")
+    private LocalDateTime dataDeCriacao = LocalDateTime.now();
 
     @ManyToOne
-    private Categoria categoria;
+    private Cliente cliente;
 
     @OneToMany
     private List<OrdensCardapio> ordensCardapioList;
 
-    public Cardapio(String nome, String descricao, Boolean disponivel, BigDecimal valor, Categoria categoria) {
-        this.nome = nome;
-        this.descricao = descricao;
-        this.disponivel = disponivel;
-        this.valor = valor;
-        this.categoria = categoria;
+    public Ordem(Cliente cliente) {
+        this.cliente = cliente;
     }
-
     
-
 
 }
