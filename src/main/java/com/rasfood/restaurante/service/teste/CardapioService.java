@@ -2,6 +2,7 @@ package com.rasfood.restaurante.service.teste;
 
 import javax.persistence.EntityManager;
 
+import com.rasfood.restaurante.util.CargaDeDadosUtil;
 import com.rasfood.restaurante.util.JPAUtil;
 
 public class CardapioService {
@@ -10,8 +11,8 @@ public class CardapioService {
         EntityManager entityManager = JPAUtil.getEntityManagerRasfood();
         entityManager.getTransaction().begin();
 
-        // CargaDeDadosUtil.cadastarCategorias(entityManager);
-        // CargaDeDadosUtil.cadastrarProdutosCardapio(entityManager);
+        CargaDeDadosUtil.cadastarCategorias(entityManager);
+        CargaDeDadosUtil.cadastrarProdutosCardapio(entityManager);
 
         //CardapioDao cardapioDao = new CardapioDao(entityManager);
 
@@ -20,6 +21,9 @@ public class CardapioService {
         // });
 
         //cardapioDao.findByNome("moqueca").ifPresent(cardapio -> System.out.println(cardapio));
+
+
+        
 
         entityManager.getTransaction().commit();
         entityManager.close();

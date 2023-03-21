@@ -25,5 +25,10 @@ public class Cliente {
     private String nome;
     private String cep;
 
+    public Cliente(String cpf, String nome, String cep) {
+        this.cpf = cpf;
+        this.nome = nome;
+        this.cep = cep;
+    }
 
 }

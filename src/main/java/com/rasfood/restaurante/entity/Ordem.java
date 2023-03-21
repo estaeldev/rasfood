@@ -2,6 +2,7 @@ package com.rasfood.restaurante.entity;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -37,12 +38,16 @@ public class Ordem {
     @ManyToOne
     private Cliente cliente;
 
-    @OneToMany
-    private List<OrdensCardapio> ordensCardapioList;
+    @OneToMany(mappedBy = "ordem")
+    private List<OrdensCardapio> ordensCardapioList = new ArrayList<>();
 
     public Ordem(Cliente cliente) {
         this.cliente = cliente;
     }
     
+    public void setOrdensCardapioList(OrdensCardapio ordensCardapio) {
+        ordensCardapio.setOrdem(this);
+        this.ordensCardapioList.add(ordensCardapio);
+    }
 
 }

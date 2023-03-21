@@ -39,7 +39,7 @@ public class Cardapio {
     @ManyToOne
     private Categoria categoria;
 
-    @OneToMany
+    @OneToMany(mappedBy = "cardapio")
     private List<OrdensCardapio> ordensCardapioList;
 
     public Cardapio(String nome, String descricao, Boolean disponivel, BigDecimal valor, Categoria categoria) {

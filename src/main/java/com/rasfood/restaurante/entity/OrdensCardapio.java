@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "ordens_carpadio")
+@Table(name = "ordens_cardapio")
 public class OrdensCardapio {
 
     @Id
@@ -37,6 +37,7 @@ public class OrdensCardapio {
         this.ordem = ordem;
         this.cardapio = cardapio;
         this.quantidade = quantidade;
+        this.valor = cardapio.getValor();
     }
 
 }
