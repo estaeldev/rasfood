@@ -33,8 +33,7 @@ public class OrdensCardapio {
     private BigDecimal valor;
     private Integer quantidade;
 
-    public OrdensCardapio(Ordem ordem, Cardapio cardapio, Integer quantidade) {
-        this.ordem = ordem;
+    public OrdensCardapio(Cardapio cardapio, Integer quantidade) {
         this.cardapio = cardapio;
         this.quantidade = quantidade;
         this.valor = cardapio.getValor();

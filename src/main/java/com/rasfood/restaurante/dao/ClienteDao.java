@@ -20,7 +20,6 @@ public class ClienteDao {
 
     public void save(final Cliente cliente) {
         if(findById(cliente.getId()).isEmpty()) {
-            System.out.println("ENTROU PARA SALVAR CLIENTE");
             this.entityManager.persist(cliente);
             this.entityManager.flush();
         }

@@ -26,8 +26,10 @@ public class OrdemService {
         clienteDao.save(felipe);
 
         Ordem ordemFelipe = new Ordem(felipe);
-        ordemFelipe.setOrdensCardapioList(new OrdensCardapio(ordemFelipe, cardapioDao.findById(1l), 2));
+        ordemFelipe.setOrdensCardapioList(new OrdensCardapio(cardapioDao.findById(1l), 2));
         ordemDao.save(ordemFelipe);
+
+        System.out.println(ordemFelipe.getOrdensCardapioList());
 
         entityManager.getTransaction().commit();
         entityManager.close();
