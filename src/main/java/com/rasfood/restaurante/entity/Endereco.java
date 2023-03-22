@@ -1,7 +1,5 @@
 package com.rasfood.restaurante.entity;
 
-import java.math.BigDecimal;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,32 +17,32 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "ordens_cardapio")
-public class OrdensCardapio {
-
+@Table(name = "enderecos")
+public class Endereco {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    private Ordem ordem;
+    private String cep;
+    private String rua;
+    private String complemento;
+    private String estado;
 
     @ManyToOne
-    private Cardapio cardapio;
+    private Cliente cliente;
 
-    private BigDecimal valor;
-    private Integer quantidade;
-
-    public OrdensCardapio(Cardapio cardapio, Integer quantidade) {
-        this.cardapio = cardapio;
-        this.quantidade = quantidade;
-        this.valor = cardapio.getValor();
+    public Endereco(String cep, String rua, String complemento, String estado) {
+        this.cep = cep;
+        this.rua = rua;
+        this.complemento = complemento;
+        this.estado = estado;
     }
 
     @Override
     public String toString() {
-        return "OrdensCardapio [id=" + id + ", valor=" + valor + ", quantidade=" + quantidade
-                + "]";
+        return "Endereco [id=" + id + ", cep=" + cep + ", rua=" + rua + ", complemento=" + complemento + ", estado="
+                + estado + "]";
     }
 
 }
